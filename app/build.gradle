@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "cn.ld.ljc"
+        minSdkVersion 9
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        /*ndk{
+            moduleName genius
+            cFlags -DANDOID_NDK -D_RELEASE
+            ldLibs m,log,jnigraphics
+            abiFilters all
+        }*/
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        /*Debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }*/
+    }
+
+    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            /*manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcdirs = ['assets']
+            jniLibs.srcDirs = ['libs']*/
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    productFlavors {
+        /* flavor1 {
+            *packageName = 'com.ld.ljc1'
+             manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+
+        flavor2 {
+            packageName = 'com.ld.ljc2'
+            manifest.srcFile 'src/main/AndroidMainfest.xml'
+        }*/
+
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("test")
+            storePassword "liudong"
+            keyAlias "liudong"
+            keyPassword "liudong"
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.edmodo:cropper:1.0.1'
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+}
+
